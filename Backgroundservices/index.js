@@ -6,21 +6,22 @@ const mongoose = require("mongoose");
 
 dotenv.config();
 
-mongoose.connect(process.env.DB_CONNECTION).then(() => {
+mongoose
+  .connect(process.env.DB_CONNECTION)
+  .then(() => {
     console.log("DATABASE CONNECTED SUCCESFULLY");
   })
   .catch((err) => {
     console.log(err);
   });
 
-  //Schedule function.
-  const runSchedule = () => {
-    cron.schedule('* * * * *', () => {
-        console.log('Hello HiAf I am running every minute!');
-        // Add your task logic here
-        
+//Schedule function.
+const runSchedule = () => {
+  cron.schedule("* * * * *", () => {
+    console.log("Hello I am running every minute!");
+    // Add your task logic here
   });
-}
+};
 
 runSchedule(); // Call the function to start the cron job
 
