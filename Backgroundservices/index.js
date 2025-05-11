@@ -3,6 +3,7 @@ const cron = require("node-cron");
 const app = express();
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
+const expenseEmail = require("./EmailService/Expense");
 
 dotenv.config();
 
@@ -18,8 +19,9 @@ mongoose
 //Schedule function.
 const runSchedule = () => {
   cron.schedule("* * * * *", () => {
-    console.log("Hello I am running every minute!");
+    //console.log("Hello I am running every minute!");
     // Add your task logic here
+    expenseEmail();
   });
 };
 
